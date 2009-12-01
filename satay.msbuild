@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="tools\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets"/>
+  <UsingTask AssemblyFile="tools\gallio\bin\Gallio.MSBuildTasks.dll" TaskName="Gallio" />
+
+  <ItemGroup>
+    <TestAssemblies Include="build\Specifications.dll" />
+    <Plugins Include="lib\concordion" />
+  </ItemGroup>
+
+  <Target Name="Build" DependsOnTargets="Test-Specs">
+    <Message Text="Concordion build completed"/>
+  </Target>
+
+  <Target Name="Test-Specs" DependsOnTargets="Compile">
+    <Gallio Assemblies="@(TestAssemblies)"
+            PluginDirectories="@(Plugins)"
+            ReportDirectory="Reports"
+            WorkingDirectory="build"
+            ReportTypes="XHtml"
+            ShowReports="true"
+            IgnoreFailures="true"
+            RunnerType="Local" />
+  </Target>
+
+  <Target Name="Compile" DependsOnTargets="InitBuildDirectory" >
+    <MSBuild Projects="Satay.sln"
+             Properties="Configuration=Debug" />
+  </Target>
+
+  <ItemGroup>
+    <BuildItems Include="build\**\*.*" />
+  </ItemGroup>
+  
+  <Target Name="InitBuildDirectory">
+    <Delete Files="@(BuildItems)" />
+  </Target>
+
+</Project>

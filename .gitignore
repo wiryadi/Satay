@@ -1,0 +1,8 @@
+Reports/*
+build/*
+*ReSharper*/*
+*.suo
+*.user
+*.cache
+**/bin/*
+**/obj/*

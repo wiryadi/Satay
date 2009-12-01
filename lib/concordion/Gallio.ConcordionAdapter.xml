@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Gallio.ConcordionAdapter</name>
+    </assembly>
+    <members>
+        <member name="T:Gallio.ConcordionAdapter.Model.ConcordionTest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Gallio.ConcordionAdapter.Model.ConcordionTest.#ctor(System.String,Gallio.Common.Reflection.ICodeElementInfo,Gallio.ConcordionAdapter.Model.ConcordionTypeInfoAdapter,Concordion.Api.Resource,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gallio.ConcordionAdapter.Model.ConcordionTest"/> class.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="codeElement">The code element.</param>
+            <param name="typeInfo">The type info.</param>
+            <param name="resource">The resource.</param>
+            <param name="fixture">The fixture.</param>
+        </member>
+        <member name="P:Gallio.ConcordionAdapter.Model.ConcordionTest.TypeInfo">
+            <summary>
+            Gets or sets the type info.
+            </summary>
+            <value>The type info.</value>
+        </member>
+        <member name="P:Gallio.ConcordionAdapter.Model.ConcordionTest.Resource">
+            <summary>
+            Gets or sets the resource.
+            </summary>
+            <value>The resource.</value>
+        </member>
+        <member name="P:Gallio.ConcordionAdapter.Model.ConcordionTest.Fixture">
+            <summary>
+            Gets or sets the fixture.
+            </summary>
+            <value>The fixture.</value>
+        </member>
+        <member name="P:Gallio.ConcordionAdapter.Model.ConcordionTest.Source">
+            <summary>
+            Gets or sets the source.
+            </summary>
+            <value>The source.</value>
+        </member>
+        <member name="P:Gallio.ConcordionAdapter.Model.ConcordionTest.Target">
+            <summary>
+            Gets or sets the target.
+            </summary>
+            <value>The target.</value>
+        </member>
+        <member name="P:Gallio.ConcordionAdapter.Model.ConcordionTest.TestControllerFactory">
+            <summary>
+            Gets the test controller factory.
+            </summary>
+            <value>The test controller factory.</value>
+        </member>
+        <member name="T:Gallio.ConcordionAdapter.Model.ConcordionTestController">
+            <summary>
+            Controls the execution of Concordion tests
+            </summary>
+        </member>
+        <member name="M:Gallio.ConcordionAdapter.Model.ConcordionTestController.RunTestsImpl(Gallio.Model.Execution.ITestCommand,Gallio.Model.ITestStep,Gallio.Model.Execution.TestExecutionOptions,Gallio.Runtime.ProgressMonitoring.IProgressMonitor)">
+            <inheritdoc />
+        </member>
+        <member name="T:Gallio.ConcordionAdapter.Model.ConcordionTestExplorer">
+            <summary>
+            Explores an assembly for Concordion tests
+            </summary>
+        </member>
+        <member name="M:Gallio.ConcordionAdapter.Model.ConcordionTestExplorer.Explore(Gallio.Model.TestModel,Gallio.Model.TestSource,System.Action{Gallio.Model.ITest})">
+            <summary>
+            Explores the tests defined within the specified test source and populates the model with them.
+            </summary>
+            <param name="testModel">The test model to populate</param>
+            <param name="testSource">The test source to explore</param>
+            <param name="consumer">An action to perform on each top-level test discovered from each source, or null if no action is required</param>
+        </member>
+        <member name="M:Gallio.ConcordionAdapter.Model.ConcordionTestExplorer.ExplorerState.ExploreAssembly(Gallio.Common.Reflection.IAssemblyInfo,System.Action{Gallio.Model.ITest})">
+            <summary>
+            Explores the assembly for Concordion tests
+            </summary>
+            <param name="assembly">The assembly.</param>
+            <param name="consumer">The consumer.</param>
+        </member>
+        <member name="M:Gallio.ConcordionAdapter.Model.ConcordionTestExplorer.ExplorerState.ExploreType(Gallio.Common.Reflection.ITypeInfo,System.Action{Gallio.Model.ITest})">
+            <summary>
+            Explores the type for Concordion tests
+            </summary>
+            <param name="type">The type.</param>
+            <param name="consumer">The consumer.</param>
+        </member>
+        <member name="T:Gallio.ConcordionAdapter.Model.ConcordionTestFramework">
+            <summary>
+            Builds a test object model, based on Concordion attributes using reflection
+            </summary>
+        </member>
+        <member name="M:Gallio.ConcordionAdapter.Model.ConcordionTestFramework.RegisterTestExplorers(System.Collections.Generic.IList{Gallio.Model.ITestExplorer})">
+            <inheritdoc />
+        </member>
+        <member name="T:Gallio.ConcordionAdapter.Model.ConcordionTypeInfoAdapter">
+            <summary>
+            Adapts type information for Concordion
+            </summary>
+        </member>
+        <member name="M:Gallio.ConcordionAdapter.Model.ConcordionTypeInfoAdapter.#ctor(Gallio.Common.Reflection.ITypeInfo)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Gallio.ConcordionAdapter.Model.ConcordionTypeInfoAdapter"/> class.
+            </summary>
+            <param name="target">The target.</param>
+        </member>
+        <member name="P:Gallio.ConcordionAdapter.Model.ConcordionTypeInfoAdapter.Target">
+            <summary>
+            Gets or sets the target.
+            </summary>
+            <value>The target.</value>
+        </member>
+        <member name="T:Concordion.Integration.GallioResultRenderer">
+            <summary>
+            Attaches the HTML specification that concordion outputs to the Gallio result
+            </summary>
+        </member>
+        <member name="M:Concordion.Integration.GallioResultRenderer.SpecificationProcessingEventHandler(System.Object,Concordion.Internal.Commands.SpecificationEventArgs)">
+            <summary>
+            Handles the SpecificationProcessing event that is triggered before the specification is processed
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="eventArgs">The <see cref="T:Concordion.Internal.Commands.SpecificationEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Concordion.Integration.GallioResultRenderer.SpecificationProcessedEventHandler(System.Object,Concordion.Internal.Commands.SpecificationEventArgs)">
+            <summary>
+            Handles the SpecificationProcessed event that is triggered after the specification is processed
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="eventArgs">The <see cref="T:Concordion.Internal.Commands.SpecificationEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="T:Gallio.ConcordionAdapter.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Gallio.ConcordionAdapter.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Gallio.ConcordionAdapter.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Gallio.ConcordionAdapter.Properties.Resources.ConcordionTestController_RunningConcordionTests">
+            <summary>
+              Looks up a localized string similar to Running Concordion Tests ....
+            </summary>
+        </member>
+        <member name="P:Gallio.ConcordionAdapter.Properties.Resources.ConcordionTestExplorer_FrameworkNameWithVersionFormat">
+            <summary>
+              Looks up a localized string similar to Concordion v{0}.
+            </summary>
+        </member>
+        <member name="P:Gallio.ConcordionAdapter.Properties.Resources.ConcordionTestFramework_ConcordionFrameworkName">
+            <summary>
+              Looks up a localized string similar to Concordion.
+            </summary>
+        </member>
+    </members>
+</doc>

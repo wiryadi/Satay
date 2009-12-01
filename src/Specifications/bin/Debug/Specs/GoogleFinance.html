@@ -1,0 +1,23 @@
+﻿<html xmlns:ccd="http://www.concordion.org/2007/concordion">
+
+    <head>
+        <link href="../concordion.css" rel="stylesheet" type="text/css" />        
+    </head>
+    
+    <body>
+        <h1>Google Finance Homepage</h1>
+        
+        <h2>General Page Layout</h2>
+        
+         <p>
+            When anonymous user <i ccd:execute="GoogleFinancePage.Open()">open Google Finance site</i>
+         </p>
+
+        <ul>
+            <li>Link to sign in to his/her Google account should be <i>visible</i> </li>
+            <li>Google Ad should be <i>visible</i> </li>
+            <li>Market Summary should be <i>visible</i> </li>
+        </ul>       
+        
+    </body>    
+</html>
