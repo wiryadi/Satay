@@ -8,7 +8,8 @@ using Selenium;
 namespace Infrastructure
 {
     /// <summary>
-    /// Set SELENIUM_BROWSER as an environment variable to control which browser is used
+    /// To change browser type, set SELENIUM_BROWSER environment variable to the target browser type
+    /// e.g.: SET SELENIUM_BROWSER=*iexplore
     /// </summary>
     public class SeleniumProvider
     {

@@ -12,21 +12,12 @@ namespace Specifications.Specs
     [ConcordionTest]
     public class GoogleFinanceTest
     {
-        private DefaultSelenium selenium;
         public GoogleFinancePage GoogleFinancePage { get; set; }
 
-        public void SetUp()
+        public GoogleFinanceTest()
         {
-            SeleniumProvider.Startup();
-            selenium = SeleniumProvider.GetClient();
-            GoogleFinancePage = new GoogleFinancePage(selenium.Processor);
+            GoogleFinancePage = new GoogleFinancePage();
         }
 
-
-        public void TearDown()
-        {
-            if (selenium != null) selenium.Stop();
-            SeleniumProvider.Shutdown();
-        }
     }
 }

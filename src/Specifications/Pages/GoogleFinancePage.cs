@@ -1,23 +1,11 @@
-﻿using Infrastructure;
+﻿using System;
+using Infrastructure;
 using Selenium;
 
 namespace Specifications.Pages
 {
     public class GoogleFinancePage : BasePage
     {
-
-        public GoogleFinancePage(ICommandProcessor seleniumCommandProcessor) 
-            : base(seleniumCommandProcessor)
-        {
-        }
-
-        protected override string ExpectedUrl
-        {
-            get
-            {
-                return "http://www.google.com/finance";
-            }
-        }
 
         public string SignInLinkVisibility
         {
@@ -44,6 +32,11 @@ namespace Specifications.Pages
                 const string locator = "css=div#summary-news-story";
                 return GetVisibility(locator);
             }
+        }
+
+        public override void Open()
+        {
+            Browser.OpenAndWaitForPageToLoad("http://www.google.com/finance");
         }
     }
 }
