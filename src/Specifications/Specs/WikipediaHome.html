@@ -1,0 +1,39 @@
+<html xmlns:ccd="http://www.concordion.org/2007/concordion">
+
+    <head>
+        <link href="../concordion.css" rel="stylesheet" type="text/css" />        
+    </head>
+    
+    <body>
+        <h1>Setup</h1>
+        <p> 
+        <span ccd:execute="Open()">Open Wikipedia Homepage</span>
+        </p>
+        
+        <h1>Layout</h1>
+        The page should contain the following elements
+        <table ccd:execute="#visibility=GetVisibility(#element)">
+            <tr>
+                <th ccd:set="#element">Element</th>
+                <th ccd:assertEquals="#visibility">Visibility</th>
+            </tr>
+            
+            <tr>
+                <td>Logo</td> <td>visible</td>
+            </tr>
+            <tr>
+                <td>SearchBox</td>  <td>visible</td>
+            </tr>
+            <tr>
+                <td>LoginLink</td>  <td>visible</td>
+            </tr>
+            <tr>
+                <td>FeaturedArticle</td> <td>visible</td>
+            </tr>
+        </table>
+
+        <h2>Authentications and Authorisations</h2>
+        As an authorised user when I view the page source, I shall get the page in readonly mode.
+        	
+    </body>    
+</html>

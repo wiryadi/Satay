@@ -1,4 +1,4 @@
-<TemplatesExport family="Live Templates">
+<TemplatesExport>
   <Template uid="c9b64427-ec28-44ec-9460-68bc93aa4554" shortcut="ConcordionTest" description="ConcordionTestClass" text="using Concordion.Integration;&#xD;&#xA;using Specifications.Pages;&#xD;&#xA;&#xD;&#xA;namespace Specifications.Specs&#xD;&#xA;{&#xD;&#xA;    [ConcordionTest]&#xD;&#xA;    public class MyConcordionTest&#xD;&#xA;    {&#xD;&#xA;    }&#xD;&#xA;}" reformat="True" shortenQualifiedReferences="True">
     <Context>
       <CSharpContext context="Everywhere" minimumLanguageVersion="2.0" />

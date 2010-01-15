@@ -13,13 +13,10 @@ namespace Infrastructure
             Browser = new SeleniumBrowser();
         }
 
-        public abstract void Open();
-
-        public string GetVisibility(string locator)
+        public void Open(string url)
         {
-            return (Browser.IsVisible(locator)) 
-                ? "visible" 
-                : "invisible";
+            Browser.OpenAndWaitForPageToLoad(url);
         }
+
     }
 }
