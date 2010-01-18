@@ -1,31 +1,25 @@
-﻿using System;
-
-namespace Infrastructure
+﻿namespace Infrastructure
 {
     public abstract class BaseWebFixture
     {
         protected  IBrowser Browser { get; private set;}
 
-        protected abstract string MapElementToLocator(string element);
-
-        protected abstract string MyUrl { get; }
 
         protected BaseWebFixture()
         {
             Browser = new SeleniumBrowser();
         }
 
-        public virtual void Open()
+        public virtual void SetUp()
         {
-            Browser.OpenAndWaitForPageToLoad(MyUrl);
+            Browser.StartSession();          
         }
 
-        public string GetVisibility(string element)
+        public virtual void TearDown()
         {
-            return Browser.IsVisible(MapElementToLocator(element)) 
-                ? "visible" 
-                : "invisible";
+            Browser.StopSession();
         }
+        
 
     }
 }

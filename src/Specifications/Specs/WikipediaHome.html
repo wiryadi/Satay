@@ -1,21 +1,28 @@
-<html xmlns:ccd="http://www.concordion.org/2007/concordion">
+<html xmlns:c="http://www.concordion.org/2007/concordion">
 
     <head>
         <link href="../concordion.css" rel="stylesheet" type="text/css" />        
     </head>
     
     <body>
-        <h1>Setup</h1>
-        <p> 
-        <span ccd:execute="Open()">Open Wikipedia Homepage</span>
+        <span c:execute="SetUp()" /> 
+        <h1>Wikipedia Homepage Specification</h1>
+        
+        <h2>Content</h2>
+        <p>
+            The homepage is the first page that the user see when he visits Wikipedia. 
+            From this page, the user should be able to easily search for interesting facts. 
+            The homepage is also the place where the user could get interesting topics of the day 
+            and various interesting historical facts.
+        </p>
+        <p>
+            Therefore the page should contain the following contents
         </p>
         
-        <h1>Layout</h1>
-        The page should contain the following elements
-        <table ccd:execute="#visibility=GetVisibility(#element)">
+        <table c:execute="#visibility=GetVisibility(#element)">
             <tr>
-                <th ccd:set="#element">Element</th>
-                <th ccd:assertEquals="#visibility">Visibility</th>
+                <th c:set="#element">Element</th>
+                <th c:assertEquals="#visibility">Visibility</th>
             </tr>
             
             <tr>
@@ -33,7 +40,9 @@
         </table>
 
         <h2>Authentications and Authorisations</h2>
-        As an authorised user when I view the page source, I shall get the page in readonly mode.
-        	
+        As an anonymous user when I attempt to <b c:execute="ViewSource()">view the page source</b>, 
+        I shall get the page in <span c:assertEquals="PageMode">readonly</span> mode.
+        
+        <span c:execute="TearDown()" />
     </body>    
 </html>

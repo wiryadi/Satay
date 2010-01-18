@@ -2,14 +2,21 @@ namespace Infrastructure
 {
     public interface  IBrowser
     {
+        void StartSession();
+        void StopSession();
+
         void Open(string url);
 
         void WaitForPageToLoad();
-        void WaitForPageToLoad(int milliseconds);
+        void WaitForPageToLoad(int timeoutMilliseconds);
 
         void OpenAndWaitForPageToLoad(string url);
-        void OpenAndWaitForPageToLoad(string url, int milliseconds);
+        void OpenAndWaitForPageToLoad(string url, int timeoutMilliseconds);
+
         void Click(string locator);
+        void ClickAndWaitForPageToLoad(string locator);
+        void ClickAndWaitForPageToLoad(string locator, int timeoutMilliseconds);
+        
         bool IsElementPresent(string locator);
         bool IsVisible(string locator);
 

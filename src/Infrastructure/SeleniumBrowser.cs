@@ -1,15 +1,29 @@
+using System;
 using Selenium;
 
 namespace Infrastructure
 {
     public class SeleniumBrowser : IBrowser
     {
-        private static readonly ISelenium selenium;
+        private ISelenium selenium;
 
         static SeleniumBrowser()
         {
-            SeleniumProvider.Startup();
+            SuiteSetup();
+            RegisterSuiteTearDown();
+        }
+
+        #region IBrowser Members
+
+        public void StartSession()
+        {
             selenium = SeleniumProvider.GetClient();
+            selenium.Open(Constants.RootUrl);
+        }
+
+        public void StopSession()
+        {
+            selenium.Stop();
         }
 
         public void Open(string url)
@@ -17,11 +31,12 @@ namespace Infrastructure
             selenium.Open(url);
         }
 
+
         public void WaitForPageToLoad()
         {
             WaitForPageToLoad(Constants.SeleniumTimeOut);
         }
-        
+
         public void WaitForPageToLoad(int milliseconds)
         {
             selenium.WaitForPageToLoad(milliseconds.ToString());
@@ -32,15 +47,26 @@ namespace Infrastructure
             OpenAndWaitForPageToLoad(url, Constants.SeleniumTimeOut);
         }
 
-        public void OpenAndWaitForPageToLoad(string url, int milliseconds)
+        public void OpenAndWaitForPageToLoad(string url, int timeoutMilliseconds)
         {
             selenium.Open(url);
-            selenium.WaitForPageToLoad(milliseconds.ToString());
+            selenium.WaitForPageToLoad(timeoutMilliseconds.ToString());
         }
 
         public void Click(string locator)
         {
             selenium.Click(locator);
+        }
+
+        public void ClickAndWaitForPageToLoad(string locator)
+        {
+            ClickAndWaitForPageToLoad(locator, Constants.SeleniumTimeOut);
+        }
+
+        public void ClickAndWaitForPageToLoad(string locator, int timeoutMilliseconds)
+        {
+            selenium.Click(locator);
+            selenium.WaitForPageToLoad(timeoutMilliseconds.ToString());
         }
 
         public bool IsElementPresent(string locator)
@@ -56,6 +82,23 @@ namespace Infrastructure
         public string GetLocation()
         {
             return selenium.GetLocation();
+        }
+
+        #endregion
+
+        private static void SuiteSetup()
+        {
+            SeleniumProvider.Startup();
+        }
+
+        private static void RegisterSuiteTearDown()
+        {
+            AppDomain.CurrentDomain.ProcessExit += SuiteTearDown;
+        }
+
+        private static void SuiteTearDown(object sender, EventArgs e)
+        {
+            SeleniumProvider.Shutdown();
         }
     }
 }

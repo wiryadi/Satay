@@ -13,9 +13,9 @@ namespace Infrastructure
     /// </summary>
     public class SeleniumProvider
     {
-        private const string JavaExe = "java.exe";
-        private const string SeleniumServerHost = Constants.SeleniumServerHost;
-        private const int SeleniumServerPort = Constants.SeleniumServerPort;
+        private const string javaExe = "java.exe";
+        private const string seleniumServerHost = Constants.SeleniumServerHost;
+        private const int seleniumServerPort = Constants.SeleniumServerPort;
 
         private static int referenceCount;
         private static Process seleniumServer;
@@ -48,7 +48,7 @@ namespace Infrastructure
 
         public static DefaultSelenium GetClient(string url)
         {
-            var selenium = new DefaultSelenium(SeleniumServerHost, SeleniumServerPort, GetTargetedBrowser(), url);
+            var selenium = new DefaultSelenium(seleniumServerHost, seleniumServerPort, GetTargetedBrowser(), url);
             selenium.Start();
             return selenium;
         }
@@ -73,13 +73,13 @@ namespace Infrastructure
             seleniumPath = Path.Combine(seleniumPath, "selenium-server");
             seleniumPath = Path.Combine(seleniumPath, "selenium-server.jar");
 
-            var seleniumProviderConfiguration = new SeleniumProviderConfiguration(seleniumPath, GetTargetedBrowser(), SeleniumServerPort);
+            var seleniumProviderConfiguration = new SeleniumProviderConfiguration(seleniumPath, GetTargetedBrowser(), seleniumServerPort);
 
             seleniumServer = new Process
                                  {
                                      StartInfo =
                                          {
-                                             FileName = JavaExe,
+                                             FileName = javaExe,
                                              Arguments = seleniumProviderConfiguration.GetArguments()
                                          }
                                  };
@@ -115,7 +115,7 @@ namespace Infrastructure
         public static bool PingSeleniumServer()
         {
             var myWebClient = new WebClient();
-            var seleniumServerUrl = string.Format("http://{0}:{1}/selenium-server/core/", SeleniumServerHost, SeleniumServerPort);
+            var seleniumServerUrl = string.Format("http://{0}:{1}/selenium-server/core/", seleniumServerHost, seleniumServerPort);
             try
             {
                 using (Stream myStream = myWebClient.OpenRead(seleniumServerUrl))
