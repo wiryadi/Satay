@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Specs\SearchTest.cs" />
     <Compile Include="Specs\WikipediaHomeTest.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -74,6 +75,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Specs\WikipediaHome.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Specs\Search.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

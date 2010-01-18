@@ -1,13 +1,18 @@
-<TemplatesExport>
-  <Template uid="c9b64427-ec28-44ec-9460-68bc93aa4554" shortcut="ConcordionTest" description="ConcordionTestClass" text="using Concordion.Integration;&#xD;&#xA;using Specifications.Pages;&#xD;&#xA;&#xD;&#xA;namespace Specifications.Specs&#xD;&#xA;{&#xD;&#xA;    [ConcordionTest]&#xD;&#xA;    public class MyConcordionTest&#xD;&#xA;    {&#xD;&#xA;    }&#xD;&#xA;}" reformat="True" shortenQualifiedReferences="True">
+<TemplatesExport family="Live Templates">
+  <Template uid="c9b64427-ec28-44ec-9460-68bc93aa4554" shortcut="ConcordionTest" description="ConcordionTestClass" text="using Concordion.Integration;&#xD;&#xA;&#xD;&#xA;namespace Specifications.Specs&#xD;&#xA;{&#xD;&#xA;    [ConcordionTest]&#xD;&#xA;    public class $ClassName$&#xD;&#xA;    {&#xD;&#xA;    }&#xD;&#xA;}" reformat="True" shortenQualifiedReferences="True">
     <Context>
       <CSharpContext context="Everywhere" minimumLanguageVersion="2.0" />
     </Context>
     <Categories />
-    <Variables />
+    <Variables>
+      <Variable name="ClassName" expression="getFileNameWithoutExtension()" initialRange="0" />
+    </Variables>
     <CustomProperties />
   </Template>
   <Template uid="010afa8a-31ea-4f2e-8d87-a2d2de5eff20" shortcut="ConcordionSpec" description="Concordion html specification" text="&lt;html xmlns:ccd=&quot;http://www.concordion.org/2007/concordion&quot;&gt;&#xD;&#xA;&#xD;&#xA;    &lt;head&gt;&#xD;&#xA;        &lt;link href=&quot;../concordion.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;        &#xD;&#xA;    &lt;/head&gt;&#xD;&#xA;    &#xD;&#xA;    &lt;body&gt;&#xD;&#xA;        TODO:&#xD;&#xA;        * Set this file's property as follows:&#xD;&#xA;			Build Action: Embedded Resource&#xD;&#xA;			Copy To Output Directory: Copy always&#xD;&#xA;		* Create corresponding C# concordion test file&#xD;&#xA;			the c# class name must be the same as the html name plus Test suffix&#xD;&#xA;			e.g for FooBar.html the C# class name is FooBarTest and the file name is FooBarTest.cs&#xD;&#xA;			&#xD;&#xA;    &lt;/body&gt;    &#xD;&#xA;&lt;/html&gt;" reformat="True" shortenQualifiedReferences="True">
+    <Context>
+      <FileNameContext mask="*.html" />
+    </Context>
     <Categories />
     <Variables />
     <CustomProperties />
