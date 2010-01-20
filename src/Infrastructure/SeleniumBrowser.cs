@@ -31,7 +31,6 @@ namespace Infrastructure
             selenium.Open(url);
         }
 
-
         public void WaitForPageToLoad()
         {
             WaitForPageToLoad(Constants.SeleniumTimeOut);
@@ -79,9 +78,48 @@ namespace Infrastructure
             return selenium.IsElementPresent(locator) && selenium.IsVisible(locator);
         }
 
+        public void Type(string locator, string value)
+        {
+            selenium.Type(locator, value);
+        }
+
+        public void TypeKeys(string locator, string value)
+        {
+            selenium.TypeKeys(locator, value);
+        }
+
+        public void Focus(string locator)
+        {
+            selenium.Focus(locator);
+        }
+
+        public string GetText(string locator)
+        {
+            return selenium.GetText(locator);
+        }
+
         public string GetLocation()
         {
             return selenium.GetLocation();
+        }
+
+        public bool WaitForElementToBeVisible(string domId)
+        {
+            return WaitForElementToBeVisible(domId, Constants.SeleniumTimeOut);
+        }
+
+        public bool WaitForElementToBeVisible(string domId, int timeout)
+        {
+            string script = string.Format("selenium.isVisible('{0}');", domId );
+            try
+            {
+                selenium.WaitForCondition(script, timeout.ToString());
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         #endregion

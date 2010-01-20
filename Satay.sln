@@ -13,6 +13,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\Infra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Test", "src\Infrastructure.Test\Infrastructure.Test.csproj", "{234230CB-C823-4E7F-BA10-7D763E2CABED}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{A23E7023-64A5-4B13-A82C-F2A9C6257717}"
+	ProjectSection(SolutionItems) = preProject
+		src\Templates\ConcordionSpec.html = src\Templates\ConcordionSpec.html
+		src\Templates\ConcordionSpecTest.cs = src\Templates\ConcordionSpecTest.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

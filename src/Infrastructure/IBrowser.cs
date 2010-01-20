@@ -20,6 +20,16 @@ namespace Infrastructure
         bool IsElementPresent(string locator);
         bool IsVisible(string locator);
 
+        void Type(string locator, string value);
+        void TypeKeys(string locator, string value);
+
+        void Focus(string locator);
+
+        string GetText(string locator);
+
+        bool WaitForElementToBeVisible(string locator);
+        bool WaitForElementToBeVisible(string locator, int timeout);
+
         string GetLocation();
     }
 }

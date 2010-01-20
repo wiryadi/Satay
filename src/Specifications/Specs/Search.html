@@ -6,16 +6,24 @@
     
     <body>
         <span c:execute="SetUp()" />
+        <h1>Searching Wikipedia</h1>
+        <p>Search is the main interest of wikipedia user. 
+        Therefore it is important that the user can use the search box effectively
+        and the result is clearly presented</p>  
         
-        TODO:
-        * Set this file's property as follows:
-			Build Action: Embedded Resource
-			Copy To Output Directory: Copy always
-		* Create corresponding C# concordion test file
-			the c# class name must be the same as the html name plus Test suffix
-			e.g for FooBar.html the C# class name is FooBarTest and the file name is FooBarTest.cs
+        <h2>Successful Search</h2>
+        <p>
+        When the user <b c:execute="EnterSearchKeyword(#keyword)">enter an exact match search keyword (e.g. <i c:set="#keyword">Wikipedia</i> )</b>, 
+        then <span c:assertEquals="PageCategory">Exact Match</span> page should be displayed.     
+        </p>
+        
+        <h2>Non Matching Search</h2>
+        When the user <b c:execute="EnterSearchKeyword(#keyword)">enter an ambiguous search keyword (e.g. <i c:set="#keyword">abcd</i>)</b>,
+         then <span c:assertEquals="PageCategory">Disambiguation</span> page should be displayed.
+        <p>
+        </p>
         
         <span c:execute="TearDown()" />
-			
+	    
     </body>    
 </html>
