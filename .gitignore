@@ -4,5 +4,3 @@ build/*
 *.suo
 *.user
 *.cache
-bin/
-obj/
