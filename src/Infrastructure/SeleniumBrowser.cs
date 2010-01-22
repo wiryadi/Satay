@@ -7,11 +7,6 @@ namespace Infrastructure
     {
         private ISelenium selenium;
 
-        static SeleniumBrowser()
-        {
-            SuiteSetup();
-            RegisterSuiteTearDown();
-        }
 
         #region IBrowser Members
 
@@ -124,19 +119,5 @@ namespace Infrastructure
 
         #endregion
 
-        private static void SuiteSetup()
-        {
-            SeleniumProvider.Startup();
-        }
-
-        private static void RegisterSuiteTearDown()
-        {
-            AppDomain.CurrentDomain.ProcessExit += SuiteTearDown;
-        }
-
-        private static void SuiteTearDown(object sender, EventArgs e)
-        {
-            SeleniumProvider.Shutdown();
-        }
     }
 }

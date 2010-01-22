@@ -20,6 +20,12 @@ namespace Infrastructure
         private static int referenceCount;
         private static Process seleniumServer;
 
+        static SeleniumProvider()
+        {
+            Startup();
+            ShutdownSeleniumOnProcessExit();
+        }
+
         public static void Startup()
         {
             if (referenceCount == 0)
@@ -28,7 +34,6 @@ namespace Infrastructure
             }
             referenceCount++;
         }
-
 
         public static void Shutdown()
         {
@@ -92,26 +97,6 @@ namespace Infrastructure
             return Environment.GetEnvironmentVariable("SELENIUM_BROWSER") ?? "*firefox";
         }
 
-        private static void WaitUntilTheServerHasStarted()
-        {
-            var count = 0;
-            const int timeout = 60;
-            while (count < timeout)
-            {
-                try
-                {
-                    bool seleniumServerIsActive = PingSeleniumServer();
-
-                    if (seleniumServerIsActive) break;
-                }
-                catch (WebException)
-                {
-                    count++;
-                    Thread.Sleep(1000);
-                }
-            }
-        }
-
         public static bool PingSeleniumServer()
         {
             var myWebClient = new WebClient();
@@ -140,6 +125,30 @@ namespace Infrastructure
             }
         }
 
+        private static void ShutdownSeleniumOnProcessExit()
+        {
+            AppDomain.CurrentDomain.ProcessExit += ((sender, e) => Shutdown());
+        }
+
+        private static void WaitUntilTheServerHasStarted()
+        {
+            var count = 0;
+            const int timeout = 60;
+            while (count < timeout)
+            {
+                try
+                {
+                    bool seleniumServerIsActive = PingSeleniumServer();
+
+                    if (seleniumServerIsActive) break;
+                }
+                catch (WebException)
+                {
+                    count++;
+                    Thread.Sleep(1000);
+                }
+            }
+        }
 
     }
 }
