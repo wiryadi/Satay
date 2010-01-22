@@ -4,16 +4,22 @@ require 'albacore'
 
 SOLUTION_PATH = "." 
 OUTPUT_PATH = "build"
+LIB_PATH = "lib"
+TOOL_PATH = "tools"
+GALLIO_EXE = "#{TOOL_PATH}\\Gallio\\bin\\Gallio.Echo.exe"
+CONCORDION_PLUGIN_PATH = "lib\\concordion"
+REPORT_PATH = "Reports"
 
 CONFIG = ENV['CONFIG'] || "Debug"
 ENVIRONMENT = ENV['ENVIRONMENT'] || "dev"
+
+TEST_ASSEMBLIES = "#{OUTPUT_PATH}\\Specifications.dll"
  
 CLEAN.include(OUTPUT_PATH)
 
 task :default => "satay:all"
  
 namespace :satay do
-  
   task :all => [:clean, :compile, :config, :test]
       
   desc "Build solutions using MSBuild"
@@ -23,22 +29,15 @@ namespace :satay do
     msb.solution = FileList["#{SOLUTION_PATH}/*.sln"]
   end
   
-  desc "Generate app and web config files for correct environment"
-  task :config do
-    ["app", "web"].each do |config_type|
-      FileList["src/**/#{config_type}.config"].each do |file|
-        e = ExpandTemplates.new
-        e.data_file = "config/environments/#{ENVIRONMENT}.yml"
-        e.expand_files = {"config/#{config_type}.template.config" => file }
-        e.expand
-      end
-    end
-  end
-
   desc "Run automated web acceptance test"
   task :test do
-  
+	sh "#{GALLIO_EXE} " +  
+		"#{TEST_ASSEMBLIES} " +
+		"/plugin-directory:#{CONCORDION_PLUGIN_PATH} " +
+		"/working-directory:#{OUTPUT_PATH} " +
+		"/report-directory:#{REPORT_PATH} " +
+		"/report-type:Html " +
+		"/show-reports"
   end
-
 end
 

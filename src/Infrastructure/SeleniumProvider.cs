@@ -127,7 +127,7 @@ namespace Infrastructure
 
         private static void ShutdownSeleniumOnProcessExit()
         {
-            AppDomain.CurrentDomain.ProcessExit += ((sender, e) => Shutdown());
+            AppDomain.CurrentDomain.DomainUnload += ((sender, e) => Shutdown());
         }
 
         private static void WaitUntilTheServerHasStarted()
