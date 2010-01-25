@@ -18,9 +18,9 @@
         </p>
         
         <h2>Non Matching Search</h2>
+        <p>
         When the user <b c:execute="EnterSearchKeyword(#keyword)">enter an ambiguous search keyword (e.g. <i c:set="#keyword">abcd</i>)</b>,
          then <span c:assertEquals="PageCategory">Disambiguation</span> page should be displayed.
-        <p>
         </p>
         
         <span c:execute="TearDown()" />

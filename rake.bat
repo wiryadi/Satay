@@ -1,5 +1,5 @@
 @echo off
 setlocal enableextensions
-set PATH=%PATH%;%CD%\tools\ruby\bin
+set PATH=%CD%\tools\ruby\bin;%PATH%;
 tools\ruby\bin\rake %*
 endlocal

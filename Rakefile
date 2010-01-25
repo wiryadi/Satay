@@ -9,13 +9,18 @@ TOOL_PATH = "tools"
 GALLIO_EXE = "#{TOOL_PATH}\\Gallio\\bin\\Gallio.Echo.exe"
 CONCORDION_PLUGIN_PATH = "lib\\concordion"
 REPORT_PATH = "Reports"
+OBJ_FILES = "src/*/obj"
 
 CONFIG = ENV['CONFIG'] || "Debug"
 ENVIRONMENT = ENV['ENVIRONMENT'] || "dev"
 
 TEST_ASSEMBLIES = "#{OUTPUT_PATH}\\Specifications.dll"
+
+#define temporary obj files to be removed
+CLEAN.include(OBJ_FILES)
  
-CLEAN.include(OUTPUT_PATH)
+#define old outputs to be removed
+CLOBBER.include(OUTPUT_PATH, REPORT_PATH)
 
 task :default => "satay:all"
  
