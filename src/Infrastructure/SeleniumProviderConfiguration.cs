@@ -7,12 +7,12 @@
         private readonly string targetedBrowser;
         private readonly int seleniumServerPort;
 
-        private const string SeleniumOptionsForNonIeBrowsers = @"-singleWindow";
+        private const string seleniumOptionsForNonIeBrowsers = @"-singleWindow";
 
 
         public SeleniumProviderConfiguration(string seleniumJar, string targetedBrowser, int seleniumServerPort)
         {
-            jvmOptions = "-Xms128M -Xmx512M"; ;
+            jvmOptions = "-Xms128M -Xmx512M";
             this.seleniumJar = seleniumJar;
             this.targetedBrowser = targetedBrowser;
             this.seleniumServerPort = seleniumServerPort;
@@ -23,7 +23,7 @@
             return string.Format(@" {0} -jar {1} {2} -port {3}",
                                  jvmOptions,
                                  seleniumJar,
-                                 targetedBrowser != "*iexplore" ? SeleniumOptionsForNonIeBrowsers : @"",
+                                 targetedBrowser != "*iexplore" ? seleniumOptionsForNonIeBrowsers : @"",
                                  seleniumServerPort);
         }
     }

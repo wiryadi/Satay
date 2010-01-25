@@ -4,6 +4,8 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{998F6E58-8AB5-43AA-BE04-BC11E28A5456}"
 	ProjectSection(SolutionItems) = preProject
 		go.cmd = go.cmd
+		rake.bat = rake.bat
+		Rakefile = Rakefile
 		satay.msbuild = satay.msbuild
 	EndProjectSection
 EndProject
