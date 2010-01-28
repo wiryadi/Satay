@@ -25,7 +25,7 @@ CLOBBER.include(OUTPUT_PATH, REPORT_PATH)
 task :default => "satay:all"
  
 namespace :satay do
-  task :all => [:clean, :compile, :config, :test]
+  task :all => [:clean, :compile, :test]
       
   desc "Build solutions using MSBuild"
   msbuildtask :compile do |msb|
