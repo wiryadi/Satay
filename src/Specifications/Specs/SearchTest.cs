@@ -1,4 +1,5 @@
-﻿using Concordion.Integration;
+﻿using System.Collections.Generic;
+using Concordion.Integration;
 using Infrastructure;
 
 namespace Specifications.Specs
@@ -8,21 +9,21 @@ namespace Specifications.Specs
     {
         public void EnterSearchKeyword(string keyword)
         {
-            Browser.Focus("css=input#searchInput");
-            Browser.Type("css=input#searchInput", keyword);
-            Browser.ClickAndWaitForPageToLoad("css=input#searchGoButton");
+            Browser.Focus(locatorMap[Elements.SearchInput]);
+            Browser.Type(locatorMap[Elements.SearchInput], keyword);
+            Browser.ClickAndWaitForPageToLoad(locatorMap[Elements.SearchButton]);
         }
 
         public string PageCategory
         {
             get
             {
-                if (Browser.IsVisible("css=table#toc"))
+                if (Browser.IsVisible(locatorMap[Elements.TableOfContent]))
                 {
                     return "Exact Match";
                 }
 
-                if (Browser.IsVisible("css=table#disambigbox"))
+                if (Browser.IsVisible(locatorMap[Elements.DisambiguationWarningBox]))
                 {
                     return "Disambiguation";
                 }
@@ -33,9 +34,21 @@ namespace Specifications.Specs
 
         }
 
-        public string AutoCompleteResultsContain(string expectedResult)
+        private enum Elements
         {
-            return "contain";
-        }
+            SearchInput,
+            SearchButton,
+            TableOfContent,
+            DisambiguationWarningBox
+        } ;
+
+        private readonly Dictionary<Elements, string> locatorMap = new Dictionary<Elements, string>
+        {
+            {Elements.SearchInput, "css=input#searchInput" },
+            {Elements.SearchButton, "css=input#searchGoButton"},
+            {Elements.TableOfContent, "css=table#toc"},
+            {Elements.DisambiguationWarningBox, "css=table#disambigbox"}                    
+        };
+
     }
 }

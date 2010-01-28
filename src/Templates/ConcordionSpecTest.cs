@@ -5,7 +5,7 @@ using Infrastructure;
 namespace Specifications.Specs
 {
     [ConcordionTest]
-    public class SearchTest:BaseWebFixture
+    public class ConcordionSpecTest:BaseWebFixture
     {
     }
 }
