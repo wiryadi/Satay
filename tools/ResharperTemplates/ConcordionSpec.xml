@@ -7,7 +7,7 @@
     <Variables />
     <CustomProperties />
   </Template>
-  <Template uid="c9b64427-ec28-44ec-9460-68bc93aa4554" shortcut="ConcordionTest" description="ConcordionTestClass" text="using System;&#xD;&#xA;using Concordion.Integration;&#xD;&#xA;using Infrastructure;&#xD;&#xA;&#xD;&#xA;namespace Specifications.Specs&#xD;&#xA;{&#xD;&#xA;    [ConcordionTest]&#xD;&#xA;    public class $ClassName$:BaseWebFixture&#xD;&#xA;    {&#xD;&#xA;        protected override string MapElementToLocator(string element)&#xD;&#xA;        {&#xD;&#xA;            throw new NotImplementedException();&#xD;&#xA;        }&#xD;&#xA;    }&#xD;&#xA;}" reformat="True" shortenQualifiedReferences="True">
+  <Template uid="c9b64427-ec28-44ec-9460-68bc93aa4554" shortcut="ConcordionTest" description="ConcordionTestClass" text="using System;&#xD;&#xA;using Concordion.Integration;&#xD;&#xA;using Infrastructure;&#xD;&#xA;&#xD;&#xA;namespace Specifications.Specs&#xD;&#xA;{&#xD;&#xA;    [ConcordionTest]&#xD;&#xA;    public class $ClassName$:BaseWebFixture&#xD;&#xA;    {&#xD;&#xA;    }&#xD;&#xA;}" reformat="True" shortenQualifiedReferences="True">
     <Context>
       <CSharpContext context="Everywhere" minimumLanguageVersion="2.0" />
     </Context>
