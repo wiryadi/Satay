@@ -25,7 +25,7 @@ CLOBBER.include(OUTPUT_PATH, REPORT_PATH)
 task :default => "satay:all"
  
 namespace :satay do
-  task :all => [:clean, :compile, :test]
+  task :all => [:clean, :compile, :test_all]
       
   desc "Build solutions using MSBuild"
   msbuildtask :compile do |msb|
@@ -34,8 +34,9 @@ namespace :satay do
     msb.solution = FileList["#{SOLUTION_PATH}/*.sln"]
   end
   
-  desc "Run automated web acceptance test"
-  task :test do
+  desc "Run all automated web acceptance test"
+  task :test_all => [:clean, :compile]
+  task :test_all do
 	sh "#{GALLIO_EXE} " +  
 		"#{TEST_ASSEMBLIES} " +
 		"/plugin-directory:#{CONCORDION_PLUGIN_PATH} " +
@@ -44,5 +45,26 @@ namespace :satay do
 		"/report-type:Html " +
 		"/show-reports"
   end
+  
+  desc "run single test"
+  task :test => [:clean, :compile]
+  task :test, :fixture_type do |t, args|
+	sh "#{GALLIO_EXE} " +  
+		"#{TEST_ASSEMBLIES} " +
+		"/plugin-directory:#{CONCORDION_PLUGIN_PATH} " +
+		"/working-directory:#{OUTPUT_PATH} " +
+		"/report-directory:#{REPORT_PATH} " +
+		"/report-type:Html " +
+		"/show-reports " +
+		"/filter:Type:#{args.fixture_type}"
+  end
+  
+  desc "Initialise the solution"
+  task :init, :solution_name do |t, args| 
+	puts "Initialising for #{args.solution_name}"
+	sh "ren Satay.sln #{args.solution_name}.sln"
+  end
 end
+
+
 
